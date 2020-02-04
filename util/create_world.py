@@ -97,6 +97,6 @@ map_room(forest_movements, forest_objects)
 
 players=Player.objects.all()
 for p in players:
-  p.currentRoom=dungeon_objects[7][8].id
+  p.currentRoom=forest_objects[9][0].id
   p.save()
 
