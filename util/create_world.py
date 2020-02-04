@@ -33,6 +33,9 @@ def connectWest(index_1, index_2, object_array):
 for i in range(0,10):
   for j in range(0,10):
     dungeon_objects[i][j].save()
+    forest_objects[i][j].save()
+    ryan_room_objects[i][j].save()
+    boss_room_objects[i][j].save()
 
 def map_room(room_movement_array, room_object_array):
   for i in range(0,10):
@@ -88,9 +91,12 @@ def map_room(room_movement_array, room_object_array):
         pass
 
 map_room(dungeon_movements, dungeon_objects)
+map_room(forest_movements, forest_objects)
+# map_room(ryan_room_movements, ryan_room_objects)
+# map_room(boss_room_movements, boss_room_objects)
 
 players=Player.objects.all()
 for p in players:
-  p.currentRoom=dungeon_objects[7][8].id
+  p.currentRoom=forest_objects[9][0].id
   p.save()
 
