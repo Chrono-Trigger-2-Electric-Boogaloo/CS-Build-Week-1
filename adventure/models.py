@@ -44,7 +44,8 @@ class Player(models.Model):
     unlocked = models.BooleanField(default=False)
     def initialize(self):
         if self.currentRoom == 0:
-            self.currentRoom = Room.objects.first().id
+            self.currentRoom = Room.objects.get(title="0,0,0").id
+            print(self.currentRoom)
             self.save()
     def room(self):
         try:
