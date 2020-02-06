@@ -43,7 +43,8 @@ class Player(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     def initialize(self):
         if self.currentRoom == 0:
-            self.currentRoom = Room.objects.first().id
+            self.currentRoom = Room.objects.get(title="0,0,0").id
+            print(self.currentRoom)
             self.save()
     def room(self):
         try:
