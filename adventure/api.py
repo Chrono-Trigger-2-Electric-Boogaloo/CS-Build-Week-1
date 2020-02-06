@@ -60,11 +60,18 @@ def move(request):
         return JsonResponse({'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'error_msg':"You cannot move that way."}, safe=True)
 
 @api_view(["POST"])
-def unlock(request):
+def unlock_basement(request):
     player = request.user.player
-    player.unlocked = True
+    player.unlocked_basement = True
     player.save()
-    return JsonResponse({'unlocked':player.unlocked}, safe=True)
+    return JsonResponse({'unlocked_basement':player.unlocked_basement}, safe=True)
+
+@api_view(["POST"])
+def unlock_door(request):
+    player = request.user.player
+    player.unlocked_door = True
+    player.save()
+    return JsonResponse({'unlocked_door':player.unlocked_door}, safe=True)
     
 
 @csrf_exempt
