@@ -45,6 +45,9 @@ class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     currentRoom = models.IntegerField(default=0)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    unlocked_basement = models.BooleanField(default=False)
+    unlocked_door = models.BooleanField(default=False)
+
     def initialize(self):
         if self.currentRoom == 0:
             self.currentRoom = Room.objects.get(title="8,4,0").id
@@ -65,8 +68,3 @@ def create_user_player(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_player(sender, instance, **kwargs):
     instance.player.save()
-
-
-
-
-
