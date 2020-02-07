@@ -5,6 +5,10 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
 
+# class Items(models.Model):
+#     title=models.CharField(max_length=50, default="Default Item Title")
+#     description=models.CharField(max_length=500, default="Default Item Description")
+
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
     description = models.CharField(max_length=500, default="DEFAULT DESCRIPTION")
@@ -46,8 +50,7 @@ class Player(models.Model):
 
     def initialize(self):
         if self.currentRoom == 0:
-            self.currentRoom = Room.objects.get(title="0,0,0").id
-            print(self.currentRoom)
+            self.currentRoom = Room.objects.get(title="8,4,0").id
             self.save()
     def room(self):
         try:
